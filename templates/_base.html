@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block head_title %}{% endblock %}
+    </title>
+    {% block css %} <!-- bloco de CSS -->
+    {% endblock %}
+</head>
+<body>
+    {% block header %} <!-- bloco de cabeçalho -->
+    {% endblock %}
+
+    {% block main %} <!-- bloco principal do body -->
+        {% block content %} <!-- bloco de conteúdo -->
+        {% endblock %}
+    {% endblock %}
+
+    {% block footer %} <!-- bloco de rodapé -->
+    {% endblock %}
+
+    {% block javascript %} <!-- bloco extra abaixo do body -->
+    {% endblock %}
+</body>
+</html>

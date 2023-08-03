@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>
+        {% block head_title %}
+            Página de Layout
+        {% endblock %}
+    </title>
+    {% block css %} <!-- bloco de CSS -->
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% endblock %}
+</head>
+<body>
+    {% block header %}
+        <header>
+            <h1>Deu certo, herdou o header.</h1>
+        </header>
+    {% endblock %}
+
+    {% block footer %}
+        <footer>
+            <h1>Deu certo também, herdou o footer.</h1>
+        </footer>
+    {% endblock %}
+</body>
+</html>
