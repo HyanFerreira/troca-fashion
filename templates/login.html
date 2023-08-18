@@ -2,25 +2,45 @@
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <title>
         {% block head_title %}
-            Login
+        Login
         {% endblock %}
     </title>
 </head>
+
 <body>
     {% block main %}
-        <main class="main-login">
-            <div class="login-container">
+    <main class="main-login">
+        <div class="login-container">
+            <div class="login-content">
                 <div class="login-tittle">
                     <h1>Login</h1>
                 </div>
+                <div class="login-form-container">
+                    <form action="#" id="form-login">
+                        <div class="label-input">
+                            <label>EMAIL</label>
+                            <input type="text" id="text">
+                        </div>
+                        <div class="label-input">
+                            <label>SENHA</label>
+                            <input type="password" id="password">
+                        </div>
+                        <button type="submit" id="button-login">Entrar</button>
+                        <div id="massage-error"></div>
+                        <div id="remember-password">Esqueceu a senha? <a href="#">Click Aqui.</a></div>
+                    </form>
+                </div>
             </div>
-            <div class="register-container">
+        </div>
+        <div class="register-container">
 
-            </div>
-        </main>
+        </div>
+    </main>
     {% endblock %}
 </body>
+
 </html>

@@ -10,6 +10,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    border: none;
     font-style: none;
     list-style: none;
     font-size: 1rem;
@@ -32,6 +33,9 @@ h1 {
     width: 50%;
     height: 100vh;
     background-color: #be9eff81;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .login-tittle h1 {
@@ -42,4 +46,29 @@ h1 {
     width: 50%;
     height: 100vh;
     /* background-color: #be9eff; */
+}
+
+.login-form-container {
+    width: 300px;
+    height: auto;
+}
+
+#form-login {
+    width: 100%;
+}
+
+.label-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-input input {
+    padding: 13px;
+    border: 1px solid black;
+}
+
+#button-login {
+    padding: 12px 50px;
+    background-color: black;
+    color: white;
 }
