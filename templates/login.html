@@ -14,6 +14,9 @@
 <body>
     {% block main %}
     <main class="main-login">
+        <div class="logo">
+            <img src="../static/img/logo2.svg" alt="">
+        </div>
         <div class="login-container">
             <div class="login-content">
                 <div class="login-tittle">
@@ -29,15 +32,22 @@
                             <label>SENHA</label>
                             <input type="password" id="password">
                         </div>
-                        <button type="submit" id="button-login">Entrar</button>
+                        <div class="button-login-class">
+                            <button type="submit" id="button-login">Login</button>
+                        </div>
                         <div id="massage-error"></div>
-                        <div id="remember-password">Esqueceu a senha? <a href="#">Click Aqui.</a></div>
+                        <div class="login-register">
+                            <div class="register">Não possui uma conta? <a href="#">Cadastrar.</a></div>
+                            <div id="remember-password">Esqueceu a senha? <a href="#">Click Aqui.</a></div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
         <div class="register-container">
+            <div class="register-content">
 
+            </div>
         </div>
     </main>
     {% endblock %}
