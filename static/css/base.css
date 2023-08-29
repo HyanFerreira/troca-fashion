@@ -6,6 +6,8 @@
     --color-five: #fcfef7;
 }
 
+/* python manage.py runserver */
+
 * {
     margin: 0;
     padding: 0;
