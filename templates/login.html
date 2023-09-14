@@ -26,18 +26,18 @@
                     <form action="#" id="form-login">
                         <div class="label-input">
                             <label>EMAIL</label>
-                            <input type="text" id="text">
+                            <input type="text" id="email-login">
                         </div>
                         <div class="label-input">
                             <label>SENHA</label>
-                            <input type="password" id="password">
+                            <input type="password" id="password-login">
                         </div>
                         <div class="button-login-class">
                             <button type="submit" id="button-login">Login</button>
                         </div>
                         <div id="massage-error"></div>
                         <div class="login-register">
-                            <div class="register">Não possui uma conta? <a href="#">Cadastrar.</a></div>
+                            <div class="register">Não possui uma conta? <a class="register-a" href="#">Cadastrar.</a></div>
                             <div id="remember-password">Esqueceu a senha? <a href="#">Click Aqui.</a></div>
                         </div>
                     </form>
@@ -46,10 +46,42 @@
         </div>
         <div class="register-container">
             <div class="register-content">
-
+                <div class="register-tittle">
+                    <h1>Crie sua conta</h1>
+                </div>
+                <div class="register-form-container">
+                    <form action="#" id="form-register">
+                        <div class="label-input">
+                            <label>NOME</label>
+                            <input type="text" id="text-name">
+                        </div>
+                        <div class="label-input">
+                            <label>EMAIL</label>
+                            <input type="text" id="email-register">
+                        </div>
+                        <div class="label-input">
+                            <label>SENHA</label>
+                            <input type="password" id="password-register">
+                        </div>
+                        <div class="label-input">
+                            <label>DATA DE NASCIMENTO</label>
+                            <input type="date" id="date">
+                        </div>
+                        <div class="button-register-class">
+                            <button type="submit" id="button-register">Cadastrar</button>
+                        </div>
+                        <div id="massage-error"></div>
+                        <div class="login-register lr2">
+                            <div class="login">Já possui uma conta? <a class="login-a" href="#">Faça login.</a></div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </main>
+    {% endblock %}
+    {% block javascript %}
+    <script src="../static/js/base.js"></script>
     {% endblock %}
 </body>
 

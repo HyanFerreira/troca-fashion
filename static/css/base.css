@@ -38,38 +38,37 @@ h1 {
     left: 25px;
 }
 
-.login-container {
+.login-container, .register-container {
     width: 50%;
     height: 100vh;
     background-color: #be9eff65;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: opacity 0.7s ease;
 }
 
-.login-content {
+.register-container {
+    opacity: 0;
+}
+
+.login-content, .register-content {
     display: flex;
     flex-direction: column;
     gap: 50px;
 }
 
-.login-tittle h1 {
+.login-tittle h1, .register-tittle h1 {
     font-size: 3rem;
     text-align: center;
 }
 
-.register-container {
-    width: 50%;
-    height: 100vh;
-    /* background-color: #be9eff; */
-}
-
-.login-form-container {
+.login-form-container, .register-form-container {
     width: 500px;
     height: auto;
 }
 
-#form-login {
+#form-login, #form-register {
     width: 100%;
 }
 
@@ -92,13 +91,13 @@ h1 {
     outline: none;
 }
 
-.button-login-class {
+.button-login-class, .button-register-class {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-#button-login {
+#button-login, #button-register {
     padding: 17px 80px;
     background-color: black;
     color: white;
@@ -107,7 +106,7 @@ h1 {
     cursor: pointer;
 }
 
-#button-login:hover {
+#button-login:hover, #button-register:hover {
     /* background-color: rgba(0, 0, 0, 0.918); */
     transform: scale(1.035);
 }
@@ -124,4 +123,12 @@ h1 {
 
 .login-register a:hover {
     color: #7041cc;
+}
+
+.lr2 {
+    justify-content: center;
+}
+
+.login-register .login {
+    text-align: center;
 }
