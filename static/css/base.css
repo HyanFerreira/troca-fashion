@@ -30,12 +30,14 @@ h1 {
     background-image: url(../img/template.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
 }
 
 .logo {
     position: absolute;
     top: 25px;
     left: 25px;
+    z-index: 999999;
 }
 
 .login-container, .register-container {
@@ -45,11 +47,13 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.7s ease;
+    transition: all 900ms;
+    /* transition: opacity 0.7s ease; */
 }
 
 .register-container {
-    opacity: 0;
+    transform: translateX(100%);
+    opacity: 1;
 }
 
 .login-content, .register-content {
@@ -131,4 +135,11 @@ h1 {
 
 .login-register .login {
     text-align: center;
+}
+
+#massage-error {
+    text-align: center;
+    padding: 0 0 10px 0;
+    color: red;
+    font-weight: 500;
 }
