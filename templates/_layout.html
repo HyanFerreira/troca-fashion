@@ -2,29 +2,50 @@
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         {% block head_title %}
-            Página de Layout
+        Página de Layout
         {% endblock %}
     </title>
     {% block css %} <!-- bloco de CSS -->
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 </head>
-<body>
-    {% block header %}
-        <header>
-            <h1>Deu certo, herdou o header.</h1>
-        </header>
-    {% endblock %}
 
-    {% block footer %}
-        <footer>
-            <h1>Deu certo também, herdou o footer.</h1>
-        </footer>
+<body>
+    <div class="container-full">
+        <aside class="aside-menu">
+
+        </aside>
+        <div class="container">
+            {% block header %}
+            <header class="header-index">
+                <div class="menu-top">
+
+                </div>
+                <nav class="nav-links">
+
+                </nav>
+            </header>
+            {% endblock %}
+
+            {% block main %}
+            {% endblock %}
+
+            {% block footer %}
+            <footer class="footer-index">
+
+            </footer>
+            {% endblock %}
+        </div>
+    </div>
+    {% block javascript %}
+        <script src="{% static 'js/index.js' %}"></script>
     {% endblock %}
 </body>
+
 </html>
