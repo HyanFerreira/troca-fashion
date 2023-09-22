@@ -19,16 +19,76 @@
 <body>
     <div class="container-full">
         <aside class="aside-menu">
-
+            <div class="aside-profile">
+                <div class="profile-img">
+                    <a href="#">
+                        <img src="../static/img/profile48.svg" alt="">
+                    </a>
+                </div>
+                <div class="profile-user">
+                    <span>hello@trocafashion.com</span>
+                </div>
+            </div>
+            <div class="aside-links">
+                <ul class="aside-ul-links">
+                    <li><a href="#">Seja membro</a></li>
+                    <li><a href="#">Meus pedidos</a></li>
+                    <li><a href="#">Carteira</a></li>
+                    <li><a href="#">Cupons</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <details>
+                        <summary>Política</summary>
+                        <div class="details-spans">
+                            <span>Política de envio</span>
+                            <span>Política de devolução</span>
+                            <span>Política de privacidade e cookiew</span>
+                        </div>
+                    </details>
+                </ul>
+            </div>
         </aside>
         <div class="container">
             {% block header %}
             <header class="header-index">
                 <div class="menu-top">
-
+                    <div class="logo-index">
+                        <a href="/home/">
+                            <img src="../static/img/logo2.svg" alt="">
+                        </a>
+                    </div>
+                    <div class="icons-index">
+                        <li><a href="#"><img class="icon" src="../static/img/profile.svg" alt=""></a></li>
+                        <li><a href="#"><img class="icon" src="../static/img/favorite.svg" alt=""></a></li>
+                        <li><a href="#"><img class="icon" src="../static/img/buy-cart.svg" alt=""></a></li>
+                    </div>
                 </div>
                 <nav class="nav-links">
-
+                    <ul class="ul-links">
+                        <li>
+                            <a href="#">Feminino</a>
+                        </li>
+                        <li>
+                            <a href="#">Masculino</a>
+                        </li>
+                        <li>
+                            <a href="#">Kids</a>
+                        </li>
+                        <li>
+                            <a href="#">Marcas</a>
+                        </li>
+                        <li>
+                            <a href="#">Calçados</a>
+                        </li>
+                        <li>
+                            <a href="#">Acessórios</a>
+                        </li>
+                    </ul>
+                    <div class="nav-search">
+                        <div class="search">
+                            <img src="../static/img/search.svg" alt="">
+                        </div>
+                        <input type="search" placeholder="Busque por palavras chave">
+                    </div>
                 </nav>
             </header>
             {% endblock %}
@@ -44,7 +104,7 @@
         </div>
     </div>
     {% block javascript %}
-        <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
     {% endblock %}
 </body>
 
