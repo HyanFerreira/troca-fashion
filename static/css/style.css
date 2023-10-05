@@ -421,8 +421,6 @@ input[type='search']::-webkit-search-cancel-button {
 
 /* Page MAIN */
 
-
-
 .main-index {
   width: 100%;
   height: 100vh;
@@ -442,7 +440,9 @@ input[type='search']::-webkit-search-cancel-button {
 .link-model-clothing {
   width: 250px;
   height: auto;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .image-clothing {
@@ -453,4 +453,54 @@ input[type='search']::-webkit-search-cancel-button {
 
 .category-favorite {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.categorys {
+  display: flex;
+  gap: 10px;
+}
+
+.category {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.category.color2 {
+  background-color: green;
+}
+
+.category.color3 {
+  background-color: blue;
+}
+
+.category.color4 {
+  background-color: #7041cc;
+}
+
+.favorite svg {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  fill: black; /* Define a cor inicial */
+  transition: ease-in-out .4s;
+}
+
+.favorite svg:hover {
+  fill: red; /* Define a cor para quando passar o mouse */
+}
+
+
+.button-trade {
+  width: 100%;
+  height: 40px;
+  background-color: #462980;
+  color: #ffffff;
+  font-weight: 500;
+  cursor: pointer;
 }
