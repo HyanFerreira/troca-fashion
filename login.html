@@ -1,21 +1,17 @@
-{% extends '_base.html' %}
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-    <title>
-        {% block head_title %}
-        Login
-        {% endblock %}
-    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <title>Login - Troca Fashion</title>
 </head>
 
 <body>
-    {% block main %}
     <main class="main-login">
         <div class="logo">
-            <img src="../static/img/logo2.svg" alt="">
+            <img src="./src/img/logo2.svg" alt="">
         </div>
         <div class="login-container">
             <div class="login-content">
@@ -37,7 +33,8 @@
                         </div>
                         <div id="massage-error"></div>
                         <div class="login-register">
-                            <div class="register">Não possui uma conta? <a class="register-a" href="#">Cadastrar.</a></div>
+                            <div class="register">Não possui uma conta? <a class="register-a" href="#">Cadastrar.</a>
+                            </div>
                             <div id="remember-password">Esqueceu a senha? <a href="#">Click Aqui.</a></div>
                         </div>
                     </form>
@@ -79,10 +76,7 @@
             </div>
         </div>
     </main>
-    {% endblock %}
-    {% block javascript %}
-    <script src="../static/js/login.js"></script>
-    {% endblock %}
+    <script src="./src/js/login.js"></script>
 </body>
 
 </html>
