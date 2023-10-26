@@ -24,7 +24,7 @@ document.getElementById("form-login").addEventListener("submit", function (event
     let password = document.getElementById("password-login").value;
 
     if (user === "admin@admin" && password === "admin") {
-        window.location.href = "/home/";
+        window.location.href = "index.html";
     } else if (user === "" && password === "") {
         document.getElementById("massage-error").innerHTML =
             "Por favor, preencha todos os campos!";
