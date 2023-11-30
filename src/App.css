@@ -419,20 +419,20 @@ input[type='search']::-webkit-search-cancel-button {
 
 /* Page MAIN */
 
-.main-index {
+/* .main-index {
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
+} */
 
 .model-clothing {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
-  padding: 30px;
+  padding: 15px;
 }
 
 .link-model-clothing {

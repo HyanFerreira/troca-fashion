@@ -7,6 +7,7 @@ import logoImage from './assets/img/logo.svg';
 import logo1Image from './assets/img/logo1.svg';
 import logo2Image from './assets/img/logo2.svg';
 import searchImage from './assets/img/search.svg';
+import ex1Image from './assets/img/ex1.png'
 
 const images = {
   profile48: profile48Image,
@@ -18,6 +19,7 @@ const images = {
   logo1: logo1Image,
   logo2: logo2Image,
   search: searchImage,
+  ex1: ex1Image,
 };
 
 export default images;
