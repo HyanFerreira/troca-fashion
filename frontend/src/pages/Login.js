@@ -2,29 +2,96 @@ import React, { useEffect } from 'react';
 import '../App.css';
 import image from '../images';
 
-function validFormLogin() {
-  document
-    .getElementById('form-login')
-    .addEventListener('submit', function (event) {
+const baseURL = 'http://localhost:7000/usuario';
+
+function Login() {
+  useEffect(() => {
+    const validFormLogin = async (event) => {
       event.preventDefault();
 
       let user = document.getElementById('email-login').value;
       let password = document.getElementById('password-login').value;
 
-      if (user === 'admin@admin' && password === 'admin') {
-        window.location.href = '/';
-      } else if (user === '' && password === '') {
-        document.getElementById('massage-error').innerHTML =
-          'Por favor, preencha todos os campos!';
-      } else {
-        document.getElementById('massage-error').innerHTML =
-          'Usuário ou senha incorreto!';
-      }
-    });
-}
+      const errorElement = document.getElementById('massage-error');
+      errorElement.innerHTML = '';
 
-function Login() {
-  useEffect(() => {
+      try {
+        const response = await fetch(`${baseURL}/buscaremail/${user}`);
+        const data = await response.json();
+
+        if (response.ok && data.length > 0) {
+          const userFromDB = data[0];
+          if (userFromDB.senha === password) {
+            window.location.href = '/';
+          } else {
+            errorElement.innerHTML = 'Senha incorreta!';
+          }
+        } else {
+          errorElement.innerHTML = 'Usuário não encontrado!';
+        }
+      } catch (error) {
+        console.error('Erro na requisição:', error);
+        errorElement.innerHTML =
+          'Erro na requisição. Tente novamente mais tarde.';
+      }
+    };
+
+    const validFormRegister = async (event) => {
+      event.preventDefault();
+
+      let nome = document.getElementById('text-name').value;
+      let email = document.getElementById('email-register').value;
+      let senha = document.getElementById('password-register').value;
+
+      const errorElement = document.getElementById('massage-error-register');
+      errorElement.innerHTML = '';
+
+      if (nome.length < 2) {
+        errorElement.innerHTML = 'O nome deve ter no mínimo 2 caracteres!';
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        errorElement.innerHTML = 'Digite um email válido!';
+        return;
+      }
+
+      if (senha.length < 4) {
+        errorElement.innerHTML = 'A senha deve ter no mínimo 4 caracteres!';
+        return;
+      }
+
+      try {
+        const response = await fetch(baseURL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ nome, email, senha }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          document.getElementById('text-name').value = '';
+          document.getElementById('email-register').value = '';
+          document.getElementById('password-register').value = '';
+          console.log('Usuário cadastrado com sucesso!', data);
+          return; // Adicione o return para evitar a execução adicional
+        } else {
+          errorElement.innerHTML = `Erro ao cadastrar usuário: ${data.message}`;
+        }
+      } catch (error) {
+        errorElement.innerHTML =
+          'Erro na requisição. Tente novamente mais tarde.';
+      }
+    };
+
+    const validateEmail = (email) => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    };
+
     let btnARegister = document.querySelector('.register-a');
     let btnALogin = document.querySelector('.login-a');
     let registerContainer = document.querySelector('.register-container');
@@ -45,9 +112,22 @@ function Login() {
     });
 
     document
+      .getElementById('button-register')
+      .addEventListener('click', validFormRegister);
+    document
       .getElementById('button-login')
       .addEventListener('click', validFormLogin);
-  }, []);
+
+    // Remova os ouvintes de evento quando o componente é desmontado
+    return () => {
+      document
+        .getElementById('button-register')
+        .removeEventListener('click', validFormRegister);
+      document
+        .getElementById('button-login')
+        .removeEventListener('click', validFormLogin);
+    };
+  }, []); // Lista de dependências vazia garante que o useEffect é executado apenas uma vez
 
   return (
     <main className="main-login">
@@ -109,16 +189,12 @@ function Login() {
                 <label>SENHA</label>
                 <input type="password" id="password-register" />
               </div>
-              <div className="label-input">
-                <label>DATA DE NASCIMENTO</label>
-                <input type="date" id="date" />
-              </div>
               <div className="button-register-class">
                 <button type="submit" id="button-register">
                   Cadastrar
                 </button>
               </div>
-              <div id="massage-error"></div>
+              <div id="massage-error-register"></div>
               <div className="login-register lr2">
                 <div className="login">
                   Já possui uma conta?{' '}
