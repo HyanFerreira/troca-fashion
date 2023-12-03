@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
 import image from '../images';
+import axios from 'axios';
 
 const baseURL = 'http://localhost:7000/usuario';
 
 function Login() {
+  const [post, setPost] = useState(null);
+
   useEffect(() => {
     const validFormLogin = async (event) => {
       event.preventDefault();
@@ -15,24 +18,30 @@ function Login() {
       const errorElement = document.getElementById('massage-error');
       errorElement.innerHTML = '';
 
-      try {
-        const response = await fetch(`${baseURL}/buscaremail/${user}`);
-        const data = await response.json();
+      if (!user || !password) {
+        errorElement.innerHTML = 'Por favor, preencha todos os campos.';
+        return;
+      }
 
-        if (response.ok && data.length > 0) {
-          const userFromDB = data[0];
-          if (userFromDB.senha === password) {
-            window.location.href = '/';
-          } else {
-            errorElement.innerHTML = 'Senha incorreta!';
-          }
+      try {
+        const response = await axios.get(`${baseURL}/buscaremail/${user}`);
+        const userFromDB = response.data[0];
+
+        if (
+          response.status === 200 &&
+          userFromDB &&
+          userFromDB.senha === password
+        ) {
+          window.location.href = '/';
         } else {
-          errorElement.innerHTML = 'Usuário não encontrado!';
+          errorElement.innerHTML = userFromDB
+            ? 'E-mail/senha incorretos!'
+            : 'Nenhum usuário encontrado para este e-mail/senha';
         }
       } catch (error) {
         console.error('Erro na requisição:', error);
         errorElement.innerHTML =
-          'Erro na requisição. Tente novamente mais tarde.';
+          'Nenhum usuário encontrado para este e-mail/senha';
       }
     };
 
@@ -62,24 +71,16 @@ function Login() {
       }
 
       try {
-        const response = await fetch(baseURL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ nome, email, senha }),
-        });
+        const response = await axios.post(baseURL, { nome, email, senha });
 
-        const data = await response.json();
-
-        if (response.ok) {
+        if (response.status === 201) {
           document.getElementById('text-name').value = '';
           document.getElementById('email-register').value = '';
           document.getElementById('password-register').value = '';
-          console.log('Usuário cadastrado com sucesso!', data);
-          return; // Adicione o return para evitar a execução adicional
+          console.log('Usuário cadastrado com sucesso!', response.data);
+          return;
         } else {
-          errorElement.innerHTML = `Erro ao cadastrar usuário: ${data.message}`;
+          errorElement.innerHTML = `Erro ao cadastrar usuário: ${response.data.message}`;
         }
       } catch (error) {
         errorElement.innerHTML =
@@ -118,7 +119,6 @@ function Login() {
       .getElementById('button-login')
       .addEventListener('click', validFormLogin);
 
-    // Remova os ouvintes de evento quando o componente é desmontado
     return () => {
       document
         .getElementById('button-register')
@@ -127,7 +127,7 @@ function Login() {
         .getElementById('button-login')
         .removeEventListener('click', validFormLogin);
     };
-  }, []); // Lista de dependências vazia garante que o useEffect é executado apenas uma vez
+  }, []);
 
   return (
     <main className="main-login">

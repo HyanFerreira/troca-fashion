@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import image from './images';
+
+const baseURL = 'http://localhost:7000/produto';
 
 function navigationHamburguer(event) {
   event.preventDefault(); // Evita o comportamento padrão do link
@@ -15,19 +17,17 @@ function navigationHamburguer(event) {
 }
 
 function App() {
-  useEffect(() => {
-    const favorite_svg = document.querySelector('.favorite svg');
-    let isFavorite = false;
+  const [produtos, setProdutos] = useState([]);
 
-    favorite_svg.addEventListener('click', () => {
-      if (isFavorite) {
-        favorite_svg.style.fill = 'transparent';
-        isFavorite = false;
-      } else {
-        favorite_svg.style.fill = 'red';
-        isFavorite = true;
-      }
-    });
+  useEffect(() => {
+    axios
+      .get(baseURL)
+      .then((response) => {
+        setProdutos(response.data);
+      })
+      .catch((error) => {
+        console.error('Erro ao buscar dados:', error);
+      });
   }, []);
 
   return (
@@ -52,12 +52,6 @@ function App() {
               <a href="#">Meus pedidos</a>
             </li>
             <li>
-              <a href="#">Carteira</a>
-            </li>
-            <li>
-              <a href="#">Cupons</a>
-            </li>
-            <li>
               <a href="#">Contato</a>
             </li>
             <details>
@@ -71,6 +65,7 @@ function App() {
           </ul>
         </div>
       </aside>
+
       <div className="container">
         <header className="header-index">
           <div className="menu-top">
@@ -97,6 +92,7 @@ function App() {
               </li>
             </div>
           </div>
+
           <nav className="nav-links">
             <ul className="ul-links">
               <div className="hamburguer" onClick={navigationHamburguer}>
@@ -131,271 +127,28 @@ function App() {
             </div>
           </nav>
         </header>
-        <div className="hidden-models">
-          <div className="models-trade">
-            <div className="model-clothing">
-              <div className="link-model-clothing">
-                <div className="image-clothing">
-                  <img src={image.ex1} alt="" />
-                </div>
-                <div className="category-favorite">
-                  <div className="categorys">
-                    <div className="category"></div>
-                    <div className="category color2"></div>
-                    <div className="category color3"></div>
-                    <div className="category color4"></div>
-                  </div>
-                  <div className="favorite">
-                    <svg
-                      width="32"
-                      height="29"
-                      viewBox="0 0 32 29"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M30 10.2071C30 12.3722 29.1687 14.4517 27.6841 15.9901C24.2669 19.5322 20.9524 23.2258 17.4074 26.6396C16.5949 27.4107 15.3059 27.3826 14.5283 26.5766L4.31526 15.9901C1.22825 12.7901 1.22825 7.62412 4.31526 4.4242C7.43261 1.19283 12.5111 1.19283 15.6284 4.4242L15.9997 4.80899L16.3707 4.42442C17.8654 2.8743 19.901 2 22.0274 2C24.1539 2 26.1893 2.87422 27.6841 4.4242C29.1688 5.96263 30 8.04208 30 10.2071Z"
-                        stroke="black"
-                        stroke-width="3"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="area-button-trade">
-                  <button className="button-trade">Trocar / Negociar</button>
-                </div>
-              </div>
-              <div className="link-model-clothing">
-                <div className="image-clothing">
-                  <img src={image.ex1} alt="" />
-                </div>
-                <div className="category-favorite">
-                  <div className="categorys">
-                    <div className="category"></div>
-                    <div className="category color2"></div>
-                    <div className="category color3"></div>
-                    <div className="category color4"></div>
-                  </div>
-                  <div className="favorite">
-                    <svg
-                      width="32"
-                      height="29"
-                      viewBox="0 0 32 29"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M30 10.2071C30 12.3722 29.1687 14.4517 27.6841 15.9901C24.2669 19.5322 20.9524 23.2258 17.4074 26.6396C16.5949 27.4107 15.3059 27.3826 14.5283 26.5766L4.31526 15.9901C1.22825 12.7901 1.22825 7.62412 4.31526 4.4242C7.43261 1.19283 12.5111 1.19283 15.6284 4.4242L15.9997 4.80899L16.3707 4.42442C17.8654 2.8743 19.901 2 22.0274 2C24.1539 2 26.1893 2.87422 27.6841 4.4242C29.1688 5.96263 30 8.04208 30 10.2071Z"
-                        stroke="black"
-                        stroke-width="3"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="area-button-trade">
-                  <button className="button-trade">Trocar / Negociar</button>
-                </div>
-              </div>
-              <div className="link-model-clothing">
-                <div className="image-clothing">
-                  <img src={image.ex1} alt="" />
-                </div>
-                <div className="category-favorite">
-                  <div className="categorys">
-                    <div className="category"></div>
-                    <div className="category color2"></div>
-                    <div className="category color3"></div>
-                    <div className="category color4"></div>
-                  </div>
-                  <div className="favorite">
-                    <svg
-                      width="32"
-                      height="29"
-                      viewBox="0 0 32 29"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M30 10.2071C30 12.3722 29.1687 14.4517 27.6841 15.9901C24.2669 19.5322 20.9524 23.2258 17.4074 26.6396C16.5949 27.4107 15.3059 27.3826 14.5283 26.5766L4.31526 15.9901C1.22825 12.7901 1.22825 7.62412 4.31526 4.4242C7.43261 1.19283 12.5111 1.19283 15.6284 4.4242L15.9997 4.80899L16.3707 4.42442C17.8654 2.8743 19.901 2 22.0274 2C24.1539 2 26.1893 2.87422 27.6841 4.4242C29.1688 5.96263 30 8.04208 30 10.2071Z"
-                        stroke="black"
-                        stroke-width="3"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="area-button-trade">
-                  <button className="button-trade">Trocar / Negociar</button>
-                </div>
-              </div>
-              <div className="link-model-clothing">
-                <div className="image-clothing">
-                  <img src={image.ex1} alt="" />
-                </div>
-                <div className="category-favorite">
-                  <div className="categorys">
-                    <div className="category"></div>
-                    <div className="category color2"></div>
-                    <div className="category color3"></div>
-                    <div className="category color4"></div>
-                  </div>
-                  <div className="favorite">
-                    <svg
-                      width="32"
-                      height="29"
-                      viewBox="0 0 32 29"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M30 10.2071C30 12.3722 29.1687 14.4517 27.6841 15.9901C24.2669 19.5322 20.9524 23.2258 17.4074 26.6396C16.5949 27.4107 15.3059 27.3826 14.5283 26.5766L4.31526 15.9901C1.22825 12.7901 1.22825 7.62412 4.31526 4.4242C7.43261 1.19283 12.5111 1.19283 15.6284 4.4242L15.9997 4.80899L16.3707 4.42442C17.8654 2.8743 19.901 2 22.0274 2C24.1539 2 26.1893 2.87422 27.6841 4.4242C29.1688 5.96263 30 8.04208 30 10.2071Z"
-                        stroke="black"
-                        stroke-width="3"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="area-button-trade">
-                  <button className="button-trade">Trocar / Negociar</button>
-                </div>
-              </div>
-              <div className="link-model-clothing">
-                <div className="image-clothing">
-                  <img src={image.ex1} alt="" />
-                </div>
-                <div className="category-favorite">
-                  <div className="categorys">
-                    <div className="category"></div>
-                    <div className="category color2"></div>
-                    <div className="category color3"></div>
-                    <div className="category color4"></div>
-                  </div>
-                  <div className="favorite">
-                    <svg
-                      width="32"
-                      height="29"
-                      viewBox="0 0 32 29"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M30 10.2071C30 12.3722 29.1687 14.4517 27.6841 15.9901C24.2669 19.5322 20.9524 23.2258 17.4074 26.6396C16.5949 27.4107 15.3059 27.3826 14.5283 26.5766L4.31526 15.9901C1.22825 12.7901 1.22825 7.62412 4.31526 4.4242C7.43261 1.19283 12.5111 1.19283 15.6284 4.4242L15.9997 4.80899L16.3707 4.42442C17.8654 2.8743 19.901 2 22.0274 2C24.1539 2 26.1893 2.87422 27.6841 4.4242C29.1688 5.96263 30 8.04208 30 10.2071Z"
-                        stroke="black"
-                        stroke-width="3"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="area-button-trade">
-                  <button className="button-trade">Trocar / Negociar</button>
-                </div>
-              </div>
-              <div className="link-model-clothing">
-                <div className="image-clothing">
-                  <img src={image.ex1} alt="" />
-                </div>
-                <div className="category-favorite">
-                  <div className="categorys">
-                    <div className="category"></div>
-                    <div className="category color2"></div>
-                    <div className="category color3"></div>
-                    <div className="category color4"></div>
-                  </div>
-                  <div className="favorite">
-                    <svg
-                      width="32"
-                      height="29"
-                      viewBox="0 0 32 29"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M30 10.2071C30 12.3722 29.1687 14.4517 27.6841 15.9901C24.2669 19.5322 20.9524 23.2258 17.4074 26.6396C16.5949 27.4107 15.3059 27.3826 14.5283 26.5766L4.31526 15.9901C1.22825 12.7901 1.22825 7.62412 4.31526 4.4242C7.43261 1.19283 12.5111 1.19283 15.6284 4.4242L15.9997 4.80899L16.3707 4.42442C17.8654 2.8743 19.901 2 22.0274 2C24.1539 2 26.1893 2.87422 27.6841 4.4242C29.1688 5.96263 30 8.04208 30 10.2071Z"
-                        stroke="black"
-                        stroke-width="3"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="area-button-trade">
-                  <button className="button-trade">Trocar / Negociar</button>
-                </div>
-              </div>
-              <div className="link-model-clothing">
-                <div className="image-clothing">
-                  <img src={image.ex1} alt="" />
-                </div>
-                <div className="category-favorite">
-                  <div className="categorys">
-                    <div className="category"></div>
-                    <div className="category color2"></div>
-                    <div className="category color3"></div>
-                    <div className="category color4"></div>
-                  </div>
-                  <div className="favorite">
-                    <svg
-                      width="32"
-                      height="29"
-                      viewBox="0 0 32 29"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M30 10.2071C30 12.3722 29.1687 14.4517 27.6841 15.9901C24.2669 19.5322 20.9524 23.2258 17.4074 26.6396C16.5949 27.4107 15.3059 27.3826 14.5283 26.5766L4.31526 15.9901C1.22825 12.7901 1.22825 7.62412 4.31526 4.4242C7.43261 1.19283 12.5111 1.19283 15.6284 4.4242L15.9997 4.80899L16.3707 4.42442C17.8654 2.8743 19.901 2 22.0274 2C24.1539 2 26.1893 2.87422 27.6841 4.4242C29.1688 5.96263 30 8.04208 30 10.2071Z"
-                        stroke="black"
-                        stroke-width="3"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="area-button-trade">
-                  <button className="button-trade">Trocar / Negociar</button>
-                </div>
-              </div>
-              <div className="link-model-clothing">
-                <div className="image-clothing">
-                  <img src={image.ex1} alt="" />
-                </div>
-                <div className="category-favorite">
-                  <div className="categorys">
-                    <div className="category"></div>
-                    <div className="category color2"></div>
-                    <div className="category color3"></div>
-                    <div className="category color4"></div>
-                  </div>
-                  <div className="favorite">
-                    <svg
-                      width="32"
-                      height="29"
-                      viewBox="0 0 32 29"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M30 10.2071C30 12.3722 29.1687 14.4517 27.6841 15.9901C24.2669 19.5322 20.9524 23.2258 17.4074 26.6396C16.5949 27.4107 15.3059 27.3826 14.5283 26.5766L4.31526 15.9901C1.22825 12.7901 1.22825 7.62412 4.31526 4.4242C7.43261 1.19283 12.5111 1.19283 15.6284 4.4242L15.9997 4.80899L16.3707 4.42442C17.8654 2.8743 19.901 2 22.0274 2C24.1539 2 26.1893 2.87422 27.6841 4.4242C29.1688 5.96263 30 8.04208 30 10.2071Z"
-                        stroke="black"
-                        stroke-width="3"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="area-button-trade">
-                  <button className="button-trade">Trocar / Negociar</button>
-                </div>
-              </div>
-            </div>
-            <div className="hidden-model-clothing"></div>
-          </div>
-        </div>
+
         <main className="main-index">
-          <div className="main-content"></div>
+          <div className="main-content">
+            {produtos.map((produto) => (
+              <div key={produto.id} className="link-model-clothing">
+                <div className="image-clothing">
+                  <img src={image.ex1} alt="" />
+                </div>
+                <div className="cor-tamanho">
+                  <span className="cor">{produto.cor}</span>
+                  <span className="tamanho">tam. {produto.tamanho}</span>
+                </div>
+                <div className="nome-descricao">
+                  <h1>{produto.nome}</h1>
+                  <span>{produto.descricao}</span>
+                </div>
+                <div className="area-button-trade">
+                  <button className="button-trade">Trocar / Negociar</button>
+                </div>
+              </div>
+            ))}
+          </div>
         </main>
       </div>
     </div>

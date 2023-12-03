@@ -88,9 +88,11 @@ app.post('/usuario', async (req, res) => {
     const { nome, email, senha } = req.body;
     const [query] = await conection.execute(
       'INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)',
-      [nome, email, senha]
+      [nome, email, senha],
     );
-    return res.status(201).json({ mensagem: 'Usuário cadastrado com sucesso!' });
+    return res
+      .status(201)
+      .json({ mensagem: 'Usuário cadastrado com sucesso!' });
   } catch (error) {
     console.error('Erro ao cadastrar usuário:', error);
     return res.status(500).json({ mensagem: 'Erro interno no servidor' });
@@ -110,7 +112,78 @@ app.put('/usuario/:id', async (req, res) => {
 
 //  deleta o usuário do database
 app.delete('/usuario/:id', async (req, res) => {
-    const { id } = req.params
-    const [query] = await conection.execute('delete from usuario where id = ?', [id])
-    return res.json(query)
+  const { id } = req.params;
+  const [query] = await conection.execute('delete from usuario where id = ?', [
+    id,
+  ]);
+  return res.json(query);
+});
+
+// CRUD dos produtos:
+
+// seleciona todos os produtos do database
+const getAllProdutos = async () => {
+  const [query] = await conection.execute('select * from produto');
+  return query;
+};
+
+// retorna a lista de produtos
+app.get('/produto', async (req, res) => {
+  const resultado = await getAllProdutos();
+
+  if (resultado.length === 0) {
+    return res
+      .status(200)
+      .json({ mensagem: 'Nenhum produto encontrado no database!' });
+  }
+  return res.status(200).json(resultado);
+});
+
+// retorna o produto pelo seu id
+app.get('/produto/:id', async (req, res) => {
+  const { id } = req.params;
+  const [query] = await conection.execute(
+    'select * from produto where id = ?',
+    [id],
+  );
+  if (query.length === 0)
+    return res.status(400).json({ mensagem: 'Nenhum produto encontrado!' });
+  return res.status(200).json(query);
+});
+
+// insere um novo produto no database
+app.post('/produto', async (req, res) => {
+  try {
+    const { id_usuario, nome, descricao, categoria, cor, tamanho } = req.body;
+    const [query] = await conection.execute(
+      'INSERT INTO produto (id_usuario, nome, descricao, categoria, cor, tamanho) VALUES (?, ?, ?, ?, ?, ?)',
+      [id_usuario, nome, descricao, categoria, cor, tamanho],
+    );
+    return res
+      .status(201)
+      .json({ mensagem: 'Produto cadastrado com sucesso!' });
+  } catch (error) {
+    console.error('Erro ao cadastrar produto:', error);
+    return res.status(500).json({ mensagem: 'Erro interno no servidor' });
+  }
+});
+
+// atualiza os dados do produto no database
+app.put('/produto/:id', async (req, res) => {
+  const { id } = req.params;
+  const { id_usuario, nome, descricao, categoria, cor, tamanho } = req.body;
+  const [query] = await conection.execute(
+    'update produto set id_usuario = ?, nome = ?, descricao = ?, categoria = ?, cor = ?, tamanho = ? where id = ?',
+    [id_usuario, nome, descricao, categoria, cor, tamanho, id],
+  );
+  return res.json(query);
+});
+
+// deleta o produto do database
+app.delete('/produto/:id', async (req, res) => {
+  const { id } = req.params;
+  const [query] = await conection.execute('delete from produto where id = ?', [
+    id,
+  ]);
+  return res.json(query);
 });
