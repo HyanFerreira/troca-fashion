@@ -452,6 +452,10 @@ input[type='search']::-webkit-search-cancel-button {
   gap: 8px;
 }
 
+.link-model-clothing * {
+  text-transform: capitalize;
+}
+
 .image-clothing {
   width: 250px;
   height: 300px;
@@ -530,6 +534,60 @@ input[type='search']::-webkit-search-cancel-button {
   color: #ffffff;
   font-weight: 500;
   cursor: pointer;
+}
+
+/* Main CadastrarProduto */
+
+.main-cadastrar-produto {
+  width: 100%;
+  height: calc(100vh - 230px);
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-cadastrar-produto {
+  width: 400px;
+  height: auto;
+}
+
+.form-cadastrar-produto h1 {
+  font-size: 1.2rem;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.form-cadastrar-produto button {
+  width: 100%;
+  padding: 10px;
+  background-color: #7041cc;
+  color: #ffffff;
+  transition: ease-in-out .3s;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.form-cadastrar-produto button:hover {
+  background-color: #6f41ccea;
+}
+
+.form-cadastrar-produto .label-input input {
+  margin-bottom: 15px;
+}
+
+.create {
+  text-align: center;
+  color: rgb(25, 207, 25);
+}
+
+/* Main Account Profile */
+
+.main-account-profile {
+  width: 100%;
+  height: calc(100vh - 230px);
+  padding: 30px;
+  display: flex;
 }
 
 @media(max-width: 1500px) {

@@ -10,13 +10,116 @@ function navigationHamburguer(event) {
   const hamburguer = document.querySelector('.hamburguer');
   const aside = document.querySelector('.aside-menu');
   const container = document.querySelector('.container');
-  const mainContent = document.querySelector('.main-content');
 
   hamburguer.classList.toggle('active');
   aside.classList.toggle('active');
   container.classList.toggle('active');
-  mainContent.classList.toggle('active');
 }
+
+const MenuAside = () => {
+  return (
+    <aside className="aside-menu">
+      <div className="aside-profile">
+        <div className="profile-img">
+          <a href="/user/account/profile">
+            <img src={image.profile48} alt="" />
+          </a>
+        </div>
+        <div className="profile-user">
+          <span>hello@trocafashion.com</span>
+        </div>
+      </div>
+      <div className="aside-links">
+        <ul className="aside-ul-links">
+          <li>
+            <a href="#">Seja membro</a>
+          </li>
+          <li>
+            <a href="#">Meus pedidos</a>
+          </li>
+          <li>
+            <a href="#">Contato</a>
+          </li>
+          <details>
+            <summary>Política</summary>
+            <div className="details-spans">
+              <span>Política de envio</span>
+              <span>Política de devolução</span>
+              <span>Política de privacidade e cookies</span>
+            </div>
+          </details>
+        </ul>
+      </div>
+    </aside>
+  );
+};
+export { MenuAside };
+
+const Header = () => {
+  return (
+    <header className="header-index">
+      <div className="menu-top">
+        <div className="logo-index">
+          <a href="/">
+            <img src={image.logo2} alt="" />
+          </a>
+        </div>
+        <div className="icons-index">
+          <li>
+            <a href="/login">
+              <img className="icon" src={image.profile} alt=""></img>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img className="icon" src={image.favorite} alt=""></img>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img className="icon" src={image.buyCart} alt=""></img>
+            </a>
+          </li>
+        </div>
+      </div>
+
+      <nav className="nav-links">
+        <ul className="ul-links">
+          <div className="hamburguer" onClick={navigationHamburguer}>
+            <span className="bar"></span>
+            <span className="bar bar-arrow"></span>
+            <span className="bar"></span>
+          </div>
+          <li>
+            <a href="#">Feminino</a>
+          </li>
+          <li>
+            <a href="#">Masculino</a>
+          </li>
+          <li>
+            <a href="#">Kids</a>
+          </li>
+          <li>
+            <a href="#">Marcas</a>
+          </li>
+          <li>
+            <a href="#">Calçados</a>
+          </li>
+          <li>
+            <a href="#">Acessórios</a>
+          </li>
+        </ul>
+        <div className="nav-search">
+          <div className="search">
+            <img src={image.search} alt="" />
+          </div>
+          <input type="search" placeholder="Busque por palavras chave" />
+        </div>
+      </nav>
+    </header>
+  );
+};
+export { Header };
 
 function App() {
   const [produtos, setProdutos] = useState([]);
@@ -34,102 +137,9 @@ function App() {
 
   return (
     <div className="container-full">
-      <aside className="aside-menu">
-        <div className="aside-profile">
-          <div className="profile-img">
-            <a href="/user/account/profile">
-              <img src={image.profile48} alt="" />
-            </a>
-          </div>
-          <div className="profile-user">
-            <span>hello@trocafashion.com</span>
-          </div>
-        </div>
-        <div className="aside-links">
-          <ul className="aside-ul-links">
-            <li>
-              <a href="#">Seja membro</a>
-            </li>
-            <li>
-              <a href="#">Meus pedidos</a>
-            </li>
-            <li>
-              <a href="#">Contato</a>
-            </li>
-            <details>
-              <summary>Política</summary>
-              <div className="details-spans">
-                <span>Política de envio</span>
-                <span>Política de devolução</span>
-                <span>Política de privacidade e cookies</span>
-              </div>
-            </details>
-          </ul>
-        </div>
-      </aside>
-
+      <MenuAside></MenuAside>
       <div className="container">
-        <header className="header-index">
-          <div className="menu-top">
-            <div className="logo-index">
-              <a href="/">
-                <img src={image.logo2} alt="" />
-              </a>
-            </div>
-            <div className="icons-index">
-              <li>
-                <a href="/login">
-                  <img className="icon" src={image.profile} alt=""></img>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img className="icon" src={image.favorite} alt=""></img>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img className="icon" src={image.buyCart} alt=""></img>
-                </a>
-              </li>
-            </div>
-          </div>
-
-          <nav className="nav-links">
-            <ul className="ul-links">
-              <div className="hamburguer" onClick={navigationHamburguer}>
-                <span className="bar"></span>
-                <span className="bar bar-arrow"></span>
-                <span className="bar"></span>
-              </div>
-              <li>
-                <a href="#">Feminino</a>
-              </li>
-              <li>
-                <a href="#">Masculino</a>
-              </li>
-              <li>
-                <a href="#">Kids</a>
-              </li>
-              <li>
-                <a href="#">Marcas</a>
-              </li>
-              <li>
-                <a href="#">Calçados</a>
-              </li>
-              <li>
-                <a href="#">Acessórios</a>
-              </li>
-            </ul>
-            <div className="nav-search">
-              <div className="search">
-                <img src={image.search} alt="" />
-              </div>
-              <input type="search" placeholder="Busque por palavras chave" />
-            </div>
-          </nav>
-        </header>
-
+        <Header></Header>
         <main className="main-index">
           <div className="main-content">
             {produtos.map((produto) => (

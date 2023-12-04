@@ -154,10 +154,10 @@ app.get('/produto/:id', async (req, res) => {
 // insere um novo produto no database
 app.post('/produto', async (req, res) => {
   try {
-    const { id_usuario, nome, descricao, categoria, cor, tamanho } = req.body;
+    const { nome, descricao, categoria, cor, tamanho } = req.body;
     const [query] = await conection.execute(
-      'INSERT INTO produto (id_usuario, nome, descricao, categoria, cor, tamanho) VALUES (?, ?, ?, ?, ?, ?)',
-      [id_usuario, nome, descricao, categoria, cor, tamanho],
+      'INSERT INTO produto (nome, descricao, categoria, cor, tamanho) VALUES (?, ?, ?, ?, ?)',
+      [nome, descricao, categoria, cor, tamanho],
     );
     return res
       .status(201)
@@ -171,10 +171,10 @@ app.post('/produto', async (req, res) => {
 // atualiza os dados do produto no database
 app.put('/produto/:id', async (req, res) => {
   const { id } = req.params;
-  const { id_usuario, nome, descricao, categoria, cor, tamanho } = req.body;
+  const { nome, descricao, categoria, cor, tamanho } = req.body;
   const [query] = await conection.execute(
-    'update produto set id_usuario = ?, nome = ?, descricao = ?, categoria = ?, cor = ?, tamanho = ? where id = ?',
-    [id_usuario, nome, descricao, categoria, cor, tamanho, id],
+    'update produto set nome = ?, descricao = ?, categoria = ?, cor = ?, tamanho = ? where id = ?',
+    [nome, descricao, categoria, cor, tamanho, id],
   );
   return res.json(query);
 });
