@@ -10,10 +10,12 @@ function navigationHamburguer(event) {
   const hamburguer = document.querySelector('.hamburguer');
   const aside = document.querySelector('.aside-menu');
   const container = document.querySelector('.container');
+  const mainContent = document.querySelector('.main-content');
 
   hamburguer.classList.toggle('active');
   aside.classList.toggle('active');
   container.classList.toggle('active');
+  mainContent.classList.toggle('active');
 }
 
 function App() {
@@ -35,7 +37,7 @@ function App() {
       <aside className="aside-menu">
         <div className="aside-profile">
           <div className="profile-img">
-            <a href="/login">
+            <a href="/user/account/profile">
               <img src={image.profile48} alt="" />
             </a>
           </div>
