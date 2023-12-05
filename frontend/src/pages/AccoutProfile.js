@@ -11,7 +11,7 @@ function AccoutProfile() {
       <div className="container">
         <Header></Header>
         <main className="main-account-profile">
-          <div className="content">
+          <div className="content-profile">
             <a href="/cadastrar/produto">Cadastrar produto</a>
           </div>
         </main>

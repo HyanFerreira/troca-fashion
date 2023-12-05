@@ -32,7 +32,7 @@ const MenuAside = () => {
       <div className="aside-links">
         <ul className="aside-ul-links">
           <li>
-            <a href="#">Seja membro</a>
+            <a href="/user/account/membro">Seja membro</a>
           </li>
           <li>
             <a href="#">Meus pedidos</a>

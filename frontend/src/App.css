@@ -590,6 +590,52 @@ input[type='search']::-webkit-search-cancel-button {
   display: flex;
 }
 
+/* Main Seja Membro */
+
+.main-seja-membro {
+  width: 100%;
+  height: calc(100vh - 230px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-seja-membro {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.content-seja-membro h1 {
+  font-size: 2.5rem;
+  color: #462980;
+}
+
+.content-seja-membro h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.membro-vantagens {
+  display: flex;
+  flex-direction: column;
+}
+
+.membro-vantagens span {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.content-seja-membro button {
+  width: 300px;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: #462980;
+  color: #ffffff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
 @media(max-width: 1500px) {
   .main-content {
     grid-template-columns: repeat(4, 1fr);
