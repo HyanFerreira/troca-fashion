@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import AccoutProfile from './pages/AccoutProfile';
 import CadastrarProduto from './pages/CadastrarProduto';
 import SejaMembro from './pages/SejaMembro'
+import MembroRegister from './pages/MembroRegister'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: '/user/account/membro',
     element: <SejaMembro />,
+  },
+  {
+    path: '/user/account/membro/register',
+    element: <MembroRegister />,
   },
 ]);
 

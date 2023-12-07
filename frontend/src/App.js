@@ -26,7 +26,7 @@ const MenuAside = () => {
           </a>
         </div>
         <div className="profile-user">
-          <span>hello@trocafashion.com</span>
+          <span>admin@admin.com</span>
         </div>
       </div>
       <div className="aside-links">
@@ -66,7 +66,7 @@ const Header = () => {
         </div>
         <div className="icons-index">
           <li>
-            <a href="/login">
+            <a href="/user/account/membro">
               <img className="icon" src={image.profile} alt=""></img>
             </a>
           </li>

@@ -4,7 +4,7 @@ import image from '../images';
 import axios from 'axios';
 import { Header, MenuAside } from '../App';
 
-function AccoutProfile() {
+function Membro() {
   return (
     <div className="container-full">
       <MenuAside></MenuAside>
@@ -33,9 +33,9 @@ function AccoutProfile() {
   );
 }
 
-export default AccoutProfile;
+export default Membro;
 
 function BtnMembro(event) {
   event.preventDefault();
-  window.location.href = '/user/account/membro/';
+  window.location.href = '/user/account/membro/register';
 }

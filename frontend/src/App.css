@@ -97,13 +97,15 @@
   margin-bottom: 8px;
 }
 
-.label-input input {
+.label-input input,
+.input-select {
   padding: 18px 13px;
   border: 1px solid black;
   margin-bottom: 25px;
 }
 
-.label-input input:focus {
+.label-input input:focus,
+.input-select:focus {
   outline: none;
 }
 
@@ -269,7 +271,8 @@
 
 .icon,
 .logo-index img,
-.profile-img a img {
+.profile-img a img,
+.profile-image img {
   filter: brightness(0) invert(1);
 }
 
@@ -540,7 +543,7 @@ input[type='search']::-webkit-search-cancel-button {
 
 .main-cadastrar-produto {
   width: 100%;
-  height: calc(100vh - 230px);
+  min-height: calc(100vh - 230px);
   padding: 30px;
   display: flex;
   align-items: center;
@@ -585,16 +588,93 @@ input[type='search']::-webkit-search-cancel-button {
 
 .main-account-profile {
   width: 100%;
-  height: calc(100vh - 230px);
+  min-height: calc(100vh - 230px);
   padding: 30px;
   display: flex;
+  justify-content: space-evenly;
+}
+
+.content-links {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content-links nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.content-links nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  display: block;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #7041cc;
+  transition: ease-in-out .3s;
+}
+
+.content-links nav a:hover {
+  background-color: #6f41cce0;
+}
+
+.content-profile {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #7041cc;
+  margin-bottom: 10px;
+}
+
+.profile-image img {
+  width: 100%;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.profile-info ul {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.profile-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.profile-info a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.profile-info a:hover {
+  text-decoration: underline;
 }
 
 /* Main Seja Membro */
 
 .main-seja-membro {
   width: 100%;
-  height: calc(100vh - 230px);
+  min-height: calc(100vh - 230px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -636,9 +716,36 @@ input[type='search']::-webkit-search-cancel-button {
   cursor: pointer;
 }
 
+/* Main Membro Register */
+
+.main-membro-register {
+  width: 100%;
+  min-height: calc(100vh - 230px);
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-membro-register {
+  width: 400px;
+}
+
 @media(max-width: 1500px) {
   .main-content {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .container {
+    margin-left: 260px;
+  }
+
+  .aside-menu {
+    width: 260px;
+  }
+
+  .aside-menu.active {
+    margin-left: -260px;
   }
 }
 
